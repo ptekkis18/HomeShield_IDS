@@ -12,12 +12,29 @@ HomeShield is a home network security monitoring project that intergrates Surica
 
 # Introduction
 This project enables continuous monitoring of the home network for suspicious activity within the network. The traffic is captured and stored on the system to be analyzed and displayed on the Evebox dashboard. The purpose of this project is to monitor and identify any unusual activities in order to block any malicious outgoing connections that may be putting the entire home network at risk. 
+
 Suricata has been used as a network intrusion detection system capturing traffic from IPv4 and IPv6 addresses.
-In order to elegantly present this, Evebox dashboard has been used making this similar to a SIEM system. Visualization and alerting has been set up so that the system administrator can observe which devices are exhibiting suspicious behaviour and proceed accordingly.
+In order to elegantly present this, Evebox dashboard has been used making this similar to a SIEM system. 
+
+Visualization and alerting has been set up so that the system administrator can observe which devices are exhibiting suspicious behaviour and proceed accordingly.
 
 # Project Scope
+HomeShield_IDS covers home network monitoring by analyzing all the packets and traffic being transmitted as well as alerting the system administrator of any suspicious activities as specified from the rules applied.
+
+This project does not cover endpoint security meaning that individual devices and their systems are not being monitored of any internal activities. Additionally, firewall management is also not covered in this project as the focus is on network monitoring and alerting.
 
 # System Architecture
+This is a high level network diagram showing Suricata and Evebox.
+
+<p align="center">
+<img src="" width="200" height="200" />
+</p>
+
+Here is another diagram representing the data flow Suricata to Evebox.
+
+<p align="center">
+<img src="" width="200" height="200" />
+</p>
 
 # Technologies Used
 
