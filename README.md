@@ -39,12 +39,43 @@ Here is another diagram representing the data flow Suricata to Evebox.
 # Technologies Used
 
 # Installation & Setup
+### Suricata
+Firstly, Suricata needs to be installed. This can be done initially by run getting the latest version of the software and performing any necessary updates first.
+```bash
+sudo apt-get update && apt-get upgrade
+```
+
+Finally, starting the Suricata service and specifying the ethernet interface. Since the focus in only in the local network, the interface eth0 is going to be used.
+To start Suricata use:
+
+```bash
+sudo suricata -c /etc/suricata/suricata.yaml -i eth0
+```
+### Evebox
+In order to enable the Evebox Dashboard the installation of Evebox 0.20.2 took place. 
+Downloading the portable server and executing the following command inside the folder to start it up.
+
+```bash
+./evebox server -D . --datastore sqlite --input /var/log/suricata/eve.json
+```
+The server is started and the input is set to the output log of Suricata that gets updated in real time.
 
 # Network Monitoring & Detection
+The following image shows the rules used in order to detect and notify the administrator of any suspicious activity inside the local network.
+
+<p align="center">
+<img src="/Assets/surRules.PNG" width="200" height="200" />
+</p>
 
 # Visualization
 
 # Testing & Validation
+In order to test if Suricata rules are active, the fast log file could be examined in real time as Suricata is running. This can be done by using the Tail command:
+
+```bash
+sudo tail -f /var/log/suricata/fast.log
+```
+
 
 # Future Improvements
 
