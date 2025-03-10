@@ -76,7 +76,6 @@ In order to test if Suricata rules are active, the fast log file could be examin
 sudo tail -f /var/log/suricata/fast.log
 ```
 
-
 # Future Improvements
 
 # Conclusion
