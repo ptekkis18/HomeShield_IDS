@@ -27,7 +27,7 @@ This project does not cover endpoint security meaning that individual devices an
 This is a high level network diagram showing how Suricata is configured inside the network to monitor and protect devices.
 
 <p align="center">
-<img src="/Assets/SuricataDiagram2.png" width="200" height="200" />
+<img src="/Assets/SuricataDiagram2.png" width="500" height="354" />
 </p>
 
 Here is another diagram representing the data flow Suricata to Evebox.
