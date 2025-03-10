@@ -24,10 +24,10 @@ HomeShield_IDS covers home network monitoring by analyzing all the packets and t
 This project does not cover endpoint security meaning that individual devices and their systems are not being monitored of any internal activities. Additionally, firewall management is also not covered in this project as the focus is on network monitoring and alerting.
 
 # System Architecture
-This is a high level network diagram showing Suricata and Evebox.
+This is a high level network diagram showing how Suricata is configured inside the network to monitor and protect devices.
 
 <p align="center">
-<img src="" width="200" height="200" />
+<img src="/Assets/SuricataDiagram2.png" width="200" height="200" />
 </p>
 
 Here is another diagram representing the data flow Suricata to Evebox.
