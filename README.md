@@ -37,6 +37,9 @@ Here is another diagram representing the data flow Suricata to Evebox.
 </p>
 
 # Technologies Used
+ * Kali Linux
+ * Suricata
+ * Evebox Dashboard
 
 # Installation & Setup
 ### Suricata
