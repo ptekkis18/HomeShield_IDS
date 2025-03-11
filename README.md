@@ -44,13 +44,52 @@ Firstly, Suricata needs to be installed. This can be done initially by run getti
 ```bash
 sudo apt-get update && apt-get upgrade
 ```
+Once the system is up-to-date the following need to be ran:
+```bash
+sudo apt-get install software-properties-common
+sudo add-apt-repository ppa:oisf/suricata-stable
+sudo apt update
+sudo apt install suricata jq
+```
+The above commands add the required repositories that are required to run Suricata.
+
+Next, the Suricata yaml file need to be configured. This is located by default in /etc/suricata/
+Using Nano, the file can be edited. The variables that need to be changed are the following:
+ * HOME_NET - Here the network ip address range can be set.
+ * af-packet - Interface variable name must be set to the same interface name as the network the device is connected to e.g. eth0.
+ * rule-files - Here the rules files need to be set, by default there is "suricata.rules" which is located or must be created in the directory: /var/lib/suricata/rules
+ * pfring -  The network interface name is set to be the same as af-packet.
+
+
+If there are any issues the engine will output error log on the terminal. 
+Most common issues are that the suricata.rules file or /var/lib/sucirata/rules direcotry are not created.
+This can be fixed by creating the directory:
+```bash
+sudo mkdir /var/lib/suricata/rules
+cd /var/lib/suricata/rules
+sudo nano suricata.rules
+```
+
+The rules can be set manually or imported from online sources. In this case the rules were created manually.
+A simple rule that checks for ICMP Packets (ping) is the following:
+```bash
+alert icmp any any -> $HOME_NET any (msg:"ICMP Ping Detected"; classtype:network-scan; sid:100001; rev:1;)
+```
+In the Network Monitoring & Detection an image of all the rules used is provided.
 
 Finally, starting the Suricata service and specifying the ethernet interface. Since the focus in only in the local network, the interface eth0 is going to be used.
 To start Suricata use:
-
 ```bash
 sudo suricata -c /etc/suricata/suricata.yaml -i eth0
 ```
+
+In order to test if Suricata and the rules used are active, the fast log file could be examined in real time as Suricata is running. This can be done by using the Tail command:
+```bash
+sudo tail -f /var/log/suricata/fast.log
+```
+This will print on a terminal the live output of the Suricata engine, if an alert is triggered, the engine will log it and the fast.log file will be populated enable the user to observe the alert and act accordingly.
+
+
 ### Evebox
 In order to enable the Evebox Dashboard the installation of Evebox 0.20.2 took place. 
 Downloading the portable server and executing the following command inside the folder to start it up.
@@ -64,17 +103,13 @@ The server is started and the input is set to the output log of Suricata that ge
 The following image shows the rules used in order to detect and notify the administrator of any suspicious activity inside the local network.
 
 <p align="center">
-<img src="/Assets/surRules.PNG" width="200" height="200" />
+<img src="/Assets/surRules.PNG" width="428" height="363" />
 </p>
 
 # Visualization
 
 # Testing & Validation
-In order to test if Suricata rules are active, the fast log file could be examined in real time as Suricata is running. This can be done by using the Tail command:
 
-```bash
-sudo tail -f /var/log/suricata/fast.log
-```
 
 # Future Improvements
 
