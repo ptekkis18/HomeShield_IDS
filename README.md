@@ -33,7 +33,7 @@ This is a high level network diagram showing how Suricata is configured inside t
 Here is another diagram representing the data flow Suricata to Evebox.
 
 <p align="center">
-<img src="" width="200" height="200" />
+<img src="/Assets/evedash.png"/>
 </p>
 
 # Technologies Used
